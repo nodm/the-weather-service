@@ -8,26 +8,20 @@ function sendPushNotification(req, res) {
     notification: {
       title: 'the Weather PWA',
       body: message,
-      icon: 'https://nodm.github.io/the-weather/assets/icons/icon-512x512.png',
+      icon: 'https://nodm.github.io/the-weather/assets/icons/icon-72x72.png',
       vibrate: [100, 50, 100],
-      data: {
-        dateOfArrival: Date.now(),
-        primaryKey: 1
-      },
       actions: [{
-        action: 'home',
-        title: 'Go to the site',
-        icon: 'https://nodm.github.io/the-weather/assets/icons/icon-512x512.png',
+        action: 'show_forecast_warsaw',
+        title: 'Show the weather in Warsaw',
       }, {
-        action: 'kyiv',
+        action: 'show_forecast_kyiv',
         title: 'Show the weather in Kyiv',
-        icon: 'https://nodm.github.io/the-weather/assets/images/clear-day.svg'
       }]
     }
   };
 
   Promise.all(
-    SUBSCRIPTIONS.map(subscription => webPush.sendNotification(subscription, JSON.stringify((notificationPayload))))
+    SUBSCRIPTIONS.map(subscription => webPush.sendNotification(subscription, JSON.stringify(notificationPayload)))
   )
     .then(() => res.status(200).json({ message: 'Notification is sent successfully.' }))
     .catch(err => {
