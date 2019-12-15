@@ -15,11 +15,6 @@ webPush.setVapidDetails(`mailto: ${appConfig.vapid.email}`, vapidPublicKey, vapi
 
 const app = express();
 
-app.use(function (req, res, next) {
-  console.log(req.url);
-  next();
-});
-
 app.use(cors());
 
 app.use(bodyParser.json());
