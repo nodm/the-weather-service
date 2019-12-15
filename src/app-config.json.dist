@@ -1,4 +1,5 @@
 {
+  "port": 8080,
   "vapid": {
     "publicKey": "< Your VAPID public key>",
     "privateKey": "< Your VAPID private key >",

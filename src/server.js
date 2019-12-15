@@ -7,7 +7,6 @@ const webPush = require('web-push');
 const addPushSubscriber = require('./add-push-subscriber');
 const sendPushNotification = require('./send-push-notification');
 
-const PORT = 80;
 const appConfig = require('./app-config.json');
 const vapidPublicKey = appConfig.vapid.publicKey;
 const vapidPrivateKey = appConfig.vapid.privateKey;
@@ -16,6 +15,10 @@ webPush.setVapidDetails(`mailto: ${appConfig.vapid.email}`, vapidPublicKey, vapi
 
 const app = express();
 
+app.use(function (req, res, next) {
+  console.log(req.url);
+  next();
+});
 
 app.use(cors());
 
@@ -34,6 +37,6 @@ app.route('/api/subscribe').post(addPushSubscriber);
 
 app.route('/api/send').post(sendPushNotification);
 
-const httpServer = app.listen(PORT, () => {
+const httpServer = app.listen(appConfig.port, () => {
   console.log('HTTP Server is running at ' + httpServer.address().port);
 });
