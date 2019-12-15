@@ -8,7 +8,7 @@ const addPushSubscriber = require('./add-push-subscriber');
 const sendPushNotification = require('./send-push-notification');
 
 const PORT = 80;
-const appConfig = require('./app-config.json.dist');
+const appConfig = require('./app-config.json');
 const vapidPublicKey = appConfig.vapid.publicKey;
 const vapidPrivateKey = appConfig.vapid.privateKey;
 
