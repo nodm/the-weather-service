@@ -1,0 +1,8 @@
+{
+  "vapid": {
+    "publicKey": "< Your VAPID public key>",
+    "privateKey": "< Your VAPID private key >",
+    "email": "< Your email >"
+  },
+  "darkSkyAPIKey": "< You DarkSky API key >"
+}
